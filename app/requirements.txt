@@ -1,0 +1,6 @@
+cryptography
+Flask==1.1.4
+Flask_login==0.4.1
+Flask-MySQL==1.5.2
+PyMySQL==1.0.2
+markupsafe==2.0.1

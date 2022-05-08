@@ -1,0 +1,18 @@
+{% extends "main.html" %}
+
+{% block content %}
+<h2>Section {{nr}}</h2>
+<table>
+	<tr>
+		<th>Command</td>
+		<th>Description</th>
+	</tr>
+	{% for item in commands %}
+	<tr>
+		<td><a href="/man/{{ item.section }}/{{ item.name }}">{{ item.name }}</a> </td>
+		<td>{{ item.description }}</td>
+	</tr>
+	{% endfor %}
+</table>
+<hr>
+{% endblock content %}

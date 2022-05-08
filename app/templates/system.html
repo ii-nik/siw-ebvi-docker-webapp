@@ -1,0 +1,19 @@
+{% extends "template.html" %} {% block content %}
+<h1>System</h1>
+
+<div class="system row">
+	<div class="system_first">
+		<a class="{% if command == 'Y2F0IGFwcC5sb2c=' %}selected{% endif %}" href="/system/Y2F0IGFwcC5sb2c=">Show log file</a> | 
+		<a class="{% if command == 'dG9wIC1uIDEgLWI=' %}selected{% endif %}" href="/system/dG9wIC1uIDEgLWI=">CPU usage</a> | 
+		<a class="{% if command == 'cHMgYXV4Zg==' %}selected{% endif %}" href="/system/cHMgYXV4Zg==">Processes</a> | 
+		<a class="{% if command == 'aWZjb25maWc=' %}selected{% endif %}" href="/system/aWZjb25maWc=">Network interfaces</a> | 
+		<a class="{% if command == 'bmV0c3RhdCAtYW4=' %}selected{% endif %}" href="/system/bmV0c3RhdCAtYW4=">Network connections</a>
+	</div>
+</div>
+
+<div class="systen row">
+	<div class="item">
+		<div class="system_text">{{ result }}</div>
+	</div>
+</div>
+{% endblock %}

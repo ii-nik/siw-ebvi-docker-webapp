@@ -1,0 +1,24 @@
+version: "3"
+services:
+  app-ante:
+    build: ./app
+    links:
+      - db
+    networks:
+      - 'siw-ebvi'
+      - 'default'
+    ports:
+      - "5001:5000"
+
+  db:
+    image: mysql:8
+    command: --default-authentication-plugin=caching_sha2_password
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d/:ro
+
+networks:
+  siw-ebvi:
+    external: true
+

@@ -1,0 +1,21 @@
+{% extends "template.html" %} {% block content %}
+<h1>All the blogs</h1>
+
+{% if blogs|length > 0 %} {% for item in blogs %}
+
+<div class="blog row">
+	<div class="blog_first">
+		<div class="blog_user">{{ item.login }}</div>
+		<div class="blog_time">{{ item.createdate }}</div>
+	</div>
+	<div class="blog_text">{{ item.text|safe }}</div>
+	<div class="blog_last">
+		{% if current_user.name == item.login or current_user.role == 'admin'
+		%} <a href="/updateblog?id={{item.id}}">Update</a> <a
+			href="/deleteblog?id={{item.id}}">Delete</a> {% endif %}
+	</div>
+</div>
+
+{% endfor %} {% else %} NO BLOGS FOUND, enhance your search .... {%
+endif %}
+{% endblock content %}

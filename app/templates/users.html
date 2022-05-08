@@ -1,0 +1,26 @@
+{% extends "template.html" %} {% block content %}
+<h1>All users</h1>
+<div class="user row">
+	<div class="user-item">
+		<table class="item">
+			{% if users|length > 0 %}
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Login</th>
+				<th>Role</th>
+			</tr>
+			{% for item in users %}
+			<tr>
+				<td>{{ item.id }}</td>
+				<td>{{ item.name }}</td>
+				<td>{{ item.email }}</td>
+				<td>{{ item.login }}</td>
+				<td>{{ item.role }}</td>
+			</tr>
+			{% endfor %} {% else %} NOTHING FOUND {% endif %}
+		</table>
+	</div>
+</div>
+{% endblock content %}

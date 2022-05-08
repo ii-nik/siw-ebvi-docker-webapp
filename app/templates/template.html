@@ -1,0 +1,50 @@
+<html>
+
+<head>
+<title>Very secure SIW ACCE Blog</title>
+<link rel="stylesheet"
+	href="{{ url_for('static', filename='app.css') }}">
+</head>
+
+<body>
+	<div id="head">
+		<img src="{{ url_for('static', filename='Logo-weiss.svg') }}" />
+		<h1>Very secure SIW ACCE Blog</h1>
+	</div>
+	<hr>
+	<div class="menu row">
+		{% if current_user.is_authenticated %}
+		<div class="item">
+			Blogs: <a href="/addblog">Add blog</a> | <a href="/showblogs">Show
+				all Blogs</a> |
+		</div>
+		<div class="item">
+			<form method="GET" action="/searchblogs">
+				Search: <input type="text" name="search" /> <input class="button"
+					type="submit" name="submit" value="Search" />
+			</form>
+		</div>
+		{% endif %} {% if current_user.role == 'admin' %}
+		<div class="item">
+			||| Admin: <a href="/admin">Manage User</a> | <a href="/system/dG9wIC1uIDEgLWI=">System</a>
+		</div>
+		{% endif %} {% if current_user.is_authenticated %}
+		<div class="item-right">
+			||| <a href="/profile">Profile</a> | <a href="/logout">Logout</a>
+		</div>
+		{% endif %} {% if not current_user.is_authenticated %}
+		<div class="item-right">
+			||| <a href="/login">Login</a> | <a href="/signup">Sign Up</a>
+		</div>
+		{% endif %}
+
+	</div>
+	<hr>
+	<div id="content">{% block content %} {% endblock %}</div>
+	<div id="footer">
+		<hr>
+		<p>Created by inik / 2022</p>
+	</div>
+</body>
+
+</html>
