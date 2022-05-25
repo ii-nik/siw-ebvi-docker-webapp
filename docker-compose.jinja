@@ -8,8 +8,8 @@ services:
     environment:
       - DB.HOST=db-{{user}}
     networks:
-      - 'siw-ebvi'
-      - 'default'
+      - 'frontend'
+      - 'backend'
 
   db-{{user}}:
     image: mysql:8
@@ -17,9 +17,13 @@ services:
     command: --default-authentication-plugin=caching_sha2_password
     environment:
       MYSQL_ROOT_PASSWORD: root
+    networks:
+      - 'backend'
     volumes:
       - ./db:/docker-entrypoint-initdb.d/:ro
 
 networks:
-  siw-ebvi:
+  frontend:
+    external: true
+  backend:
     external: true
