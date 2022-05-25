@@ -1,7 +1,8 @@
 version: "3"
 services:
-  app-ante:
+  {{user}}:
     build: ./app
+    container_name: app-{{user}}
     links:
       - db
     networks:
@@ -11,6 +12,7 @@ services:
   db:
     image: mysql:8
     command: --default-authentication-plugin=caching_sha2_password
+    container_name: db-{{user}}
     environment:
       MYSQL_ROOT_PASSWORD: root
     volumes:
