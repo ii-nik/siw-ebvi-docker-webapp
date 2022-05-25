@@ -1,18 +1,20 @@
 version: "3"
 services:
-  {{user}}:
+  app-{{user}}:
     build: ./app
     container_name: app-{{user}}
     links:
-      - db
+      - db-{{user}}
+    environment:
+      - DB.HOST=db-{{user}}
     networks:
       - 'siw-ebvi'
       - 'default'
 
-  db:
+  db-{{user}}:
     image: mysql:8
-    command: --default-authentication-plugin=caching_sha2_password
     container_name: db-{{user}}
+    command: --default-authentication-plugin=caching_sha2_password
     environment:
       MYSQL_ROOT_PASSWORD: root
     volumes:
