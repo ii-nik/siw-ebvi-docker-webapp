@@ -48,3 +48,9 @@ Stop the web app using
 ```
 docker-compose down
 ```
+
+## Access
+
+* You will find the application here: http://app-<student>.sanopool.ch
+* A normal user is: user1 / 123456
+* A administrator user is: admin / topsecret
