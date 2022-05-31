@@ -1,16 +1,9 @@
 # siw-docker-webapp
 
-The siw-docker-webapp 
+The siw-ebvi-docker-webapp 
 
 * is a very simple web application (no compilation needed, only building and deploying images)
-* has many security vulnerabilities
-
-With this application some of security related principles can be shown:
-
-* Hardening a docker deployment
-* Search for vulnerabilities
-
-The intention is to use this webapp in some of the lectures at SIW, eg. ACCE, FACSS, EBVI
+* is a little blog entry application
 
 
 ## Credits
@@ -21,7 +14,28 @@ Also for authentication, this was helpful: https://www.digitalocean.com/communit
 
 # Development
 
+See https://github.com/ii-nik/siw-ebvi-docker-webapp
+
 # Deploy
+
+Checkout the application using
+
+```
+git clone https://github.com/ii-nik/siw-ebvi-docker-webapp.git
+```
+
+Switch to the right version
+
+```
+cd siw-ebvi-docker-webapp
+git checkout -b <version> origin/<version>
+```
+
+Prepare to be used with reverse proxy and multiple parallel instances
+
+```
+python3 prepare.py
+```
 
 Start the web app using 
 
@@ -29,9 +43,14 @@ Start the web app using
 docker-compose up -d --build
 ```
 
-* You will find the application here: http://localhost:5000
+Stop the web app using
+
+```
+docker-compose down
+```
+
+## Access
+
+* You will find the application here: http://app-<student>.sanopool.ch
 * A normal user is: user1 / 123456
 * A administrator user is: admin / topsecret
-
-
-
