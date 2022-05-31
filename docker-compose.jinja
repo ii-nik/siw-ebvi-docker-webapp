@@ -6,8 +6,8 @@ services:
     links:
       - db
     networks:
-      - 'siw-ebvi'
-      - 'default'
+      - 'frontened'
+      - 'backend'
 
   db:
     image: mysql:8
@@ -17,7 +17,11 @@ services:
       MYSQL_ROOT_PASSWORD: root
     volumes:
       - ./db:/docker-entrypoint-initdb.d/:ro
+    networks:
+      - 'backend'
 
 networks:
-  siw-ebvi:
+  frontend:
+    external: true
+  backend:
     external: true
