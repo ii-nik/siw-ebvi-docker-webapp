@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: app
+  template:
+    metadata:
+      labels:
+        service: app
+    spec:
+      containers:
+        - env:
+            - name: DB.HOST
+              value: db
+          image: www.sanopool.ch:5000/app
+          name: app
+      imagePullSecrets:
+      - name: regcred
+      restartPolicy: Always
+

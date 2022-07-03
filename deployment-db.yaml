@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db  
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: db
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        service: db
+    spec:
+      containers:
+        - args:
+            - --default-authentication-plugin=caching_sha2_password
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: root
+          image: www.sanopool.ch:5000/db
+          name: db
+      imagePullSecrets:
+      - name: regcred
+      restartPolicy: Always
+
