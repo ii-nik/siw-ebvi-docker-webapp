@@ -18,6 +18,10 @@ See https://github.com/ii-nik/siw-ebvi-docker-webapp
 
 # Deploy
 
+ATTENTION: In this version docker-compose still works, but there where additions for deploying the app to Kubernetes. How to do this is documented in separate course documentation.
+
+If you go with docker-compose, please rather change to the main branch.
+
 Checkout the application using
 
 ```
